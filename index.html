@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Introduction to (web) programming</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/codestar.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+
+    <style>
+      h1.deck-title {
+        transform: rotate(-2deg);
+        text-shadow: -4px 4px 1px black;
+        font-size: 12rem;
+        margin-bottom: 12rem;
+      }
+
+      .attribution,
+      .attribution a {
+        color: white;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-background-opacity="0.3">
+          <textarea data-template data-line-numbers>
+            # Introduction to (web) programming <!-- .element: class="deck-title" -->
+
+            Note:
+
+            * 2 hour session
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        progress: true,
+        controls: true,
+        // Disable controls bouncing animation
+        controlsTutorial: false,
+        // defaultTiming: false,
+        // slideNumber: "c/t",
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+
+      if (document.location.search === "?print-pdf") {
+        console.log("Preparing for printing");
+        Reveal.configure({
+          showNotes: "separate-page",
+          slideNumber: "c/t",
+          pdfSeparateFragments: false,
+        });
+      }
+    </script>
+  </body>
+</html>
