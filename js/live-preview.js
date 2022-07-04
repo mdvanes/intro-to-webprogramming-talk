@@ -25,6 +25,9 @@ function setPreview(slideElem) {
       body {
         font-size: 300%;
       }
+      input, button {
+        font-size: 100%;
+      }
       </style>`;
   const withStyles = [part1, injectStyle, part2].join("");
   const withSrcPaths = replaceSrc(withStyles);
