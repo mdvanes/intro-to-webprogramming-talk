@@ -71,14 +71,14 @@
       }
 
       .side-by-side > div > iframe {
-        height: calc(100% - 57px);
+        height: calc(100% - 1.4rem);
         width: 100%;
         max-width: 100%;
         /* display: none; */
       }
 
       .side-by-side .chromes-chrome {
-        background-image: url('assets/chromes_chrome.png');
+        background-image: url("assets/chromes_chrome.png");
         background-repeat: no-repeat;
         padding-top: 47px;
         background-size: 100%;
@@ -221,7 +221,7 @@
             Note:
 
             - TODO show inline example of H1
-            - or use <img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />
+            - or use `<img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />`
           </textarea>
         </section>
 
@@ -285,16 +285,28 @@
       }
 
       function setPreview(slideElem) {
+        const value = slideElem.querySelector("textarea").value;
+        const splitAt = value.indexOf("<head>") + "<head>".length;
+        const part1 = value.substring(0, splitAt);
+        const part2 = value.substring(splitAt);
+        const injectStyle = `<style>
+          html {
+            height: 100%;
+          }
+          body {
+            font-size: 150%;
+          }
+          </style>`;
         slideElem.querySelector("iframe").src =
           "data:text/html;charset=utf-8," +
-          encodeURIComponent(slideElem.querySelector("textarea").value);
+          encodeURIComponent([part1, injectStyle, part2].join(""));
       }
 
       function updatePreview(event) {
-        console.log(
-          event.target.value,
-          event.target.parentElement.parentElement
-        );
+        // console.log(
+        //   event.target.value,
+        //   event.target.parentElement.parentElement
+        // );
         const slideElem = event.target.parentElement.parentElement;
         setPreview(slideElem);
       }
