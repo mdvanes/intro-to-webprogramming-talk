@@ -142,7 +142,7 @@
         </section>
 
         <!-- side-by-side view -->
-        <section class="side-by-side">
+        <section class="side-by-side" data-transition="slide-in none-out">
           <div>
             <textarea id="hello-textarea">
 <html>
@@ -171,7 +171,7 @@
           <div></div>
         </section>
 
-        <section class="side-by-side">
+        <section class="side-by-side update-preview" data-transition="fade-in slide-out">
           <div>
             <textarea id="hello-textarea">
 <html>
@@ -208,7 +208,7 @@
           </div>
         </section>
 
-        <section class="side-by-side">
+        <section class="side-by-side" data-transition="slide-in none-out">
           <div>
             <textarea>
 <html>
@@ -225,7 +225,7 @@
           <div></div>
         </section>
 
-        <section class="side-by-side">
+        <section class="side-by-side update-preview" data-transition="fade-in slide-out">
           <div>
             <textarea>
 <html>
@@ -233,7 +233,7 @@
     <title>YOUR NAME</title>
   </head>
   <body>
-    <img src="assets/hellothere.gif" />
+    <img src="hellothere.gif" />
   </body>
 </html>
             </textarea>
@@ -255,27 +255,6 @@
               </head>
               <body>
                 <h1>Hello, World!</h1>
-                <img src="hellothere.gif" />
-              </body>
-            </html>
-            ```
-
-            Note:
-
-            - TODO show inline example of H1
-            - or use `<img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />`
-          </textarea>
-        </section>
-
-        <section data-markdown>
-          <textarea data-template data-line-numbers>
-            ```html [7]
-            <html>
-              <head>
-                <title>YOUR NAME</title>
-              </head>
-              <body>
-                <h1>Hello, World!</h1>
                 <script>alert('Hello!')</script>
               </body>
             </html>
@@ -283,7 +262,9 @@
 
             Note:
 
-            - 
+            - TODO show inline example of H1
+            - explain script and alert();
+            - or use `<img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />`
           </textarea>
         </section>
       </div>
@@ -294,7 +275,7 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script type="module">
-      import { onSlideChangedUpdatePreview } from './js/live-preview.js';
+      import { onSlideChangedUpdatePreview } from "./js/live-preview.js";
 
       // More info about initialization & config:
       // - https://revealjs.com/initialization/

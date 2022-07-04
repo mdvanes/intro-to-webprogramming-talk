@@ -5,6 +5,14 @@ function preview(src, target) {
     encodeURIComponent(document.getElementById(src).value);
 }
 
+function replaceSrc(value) {
+  const srcIndex = value.indexOf(' src="');
+  if (srcIndex > -1) {
+    return value.replaceAll(' src="', ` src="${top.location.origin}/assets/`);
+  }
+  return value;
+}
+
 function setPreview(slideElem) {
   const value = slideElem.querySelector("textarea").value;
   const splitAt = value.indexOf("<head>") + "<head>".length;
@@ -18,9 +26,10 @@ function setPreview(slideElem) {
         font-size: 300%;
       }
       </style>`;
+  const withStyles = [part1, injectStyle, part2].join("");
+  const withSrcPaths = replaceSrc(withStyles);
   slideElem.querySelector("iframe").src =
-    "data:text/html;charset=utf-8," +
-    encodeURIComponent([part1, injectStyle, part2].join(""));
+    "data:text/html;charset=utf-8," + encodeURIComponent(withSrcPaths);
 }
 
 function updatePreview(event) {
@@ -35,22 +44,10 @@ function updatePreview(event) {
 export function onSlideChangedUpdatePreview(event) {
   const slideElem = event.currentSlide;
 
-  if (slideElem.classList.contains("side-by-side")) {
+  if (slideElem.classList.contains("update-preview")) {
     setPreview(slideElem);
     slideElem
       .querySelector("textarea")
       .addEventListener("change", updatePreview);
   }
 }
-
-// slidetransitionend
-// Reveal.on("slidechanged", (event) => {
-//   const slideElem = event.currentSlide;
-
-//   if (slideElem.classList.contains("side-by-side")) {
-//     setPreview(slideElem);
-//     slideElem
-//       .querySelector("textarea")
-//       .addEventListener("change", updatePreview);
-//   }
-// });
