@@ -73,7 +73,7 @@
       .side-by-side > div > iframe {
         height: calc(100% - 57px);
         width: 100%;
-        display: none;
+        /* display: none; */
       }
     </style>
   </head>
@@ -156,15 +156,7 @@
             </pre> -->
           </div>
 
-          <div>
-            <button onclick="preview('hello-textarea', 'hello-iframe')">
-              preview
-            </button>
-            <iframe
-              id="hello-iframe"
-              src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
-            ></iframe>
-          </div>
+          <div></div>
         </section>
 
         <section class="side-by-side">
@@ -194,9 +186,9 @@
           </div>
 
           <div>
-            <button onclick="preview('hello-textarea', 'hello-iframe')">
+            <!-- <button onclick="preview('hello-textarea', 'hello-iframe')">
               preview
-            </button>
+            </button> -->
             <iframe
               id="hello-iframe"
               src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
@@ -283,6 +275,33 @@
           "data:text/html;charset=utf-8," +
           encodeURIComponent(document.getElementById(src).value);
       }
+
+      function setPreview(slideElem) {
+        slideElem.querySelector("iframe").src =
+          "data:text/html;charset=utf-8," +
+          encodeURIComponent(slideElem.querySelector("textarea").value);
+      }
+
+      function updatePreview(event) {
+        console.log(
+          event.target.value,
+          event.target.parentElement.parentElement
+        );
+        const slideElem = event.target.parentElement.parentElement;
+        setPreview(slideElem);
+      }
+
+      // slidetransitionend
+      Reveal.on("slidechanged", (event) => {
+        const slideElem = event.currentSlide;
+
+        if (slideElem.classList.contains("side-by-side")) {
+          setPreview(slideElem);
+          slideElem
+            .querySelector("textarea")
+            .addEventListener("change", updatePreview);
+        }
+      });
     </script>
   </body>
 </html>
