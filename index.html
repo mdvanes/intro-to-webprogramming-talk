@@ -29,6 +29,22 @@
         color: white;
         font-size: 10px;
       }
+
+      .side-by-side {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1;
+        top: 0 !important;
+        height: 100%;
+      }
+
+      .side-by-side > div {
+        flex: 1;
+      }
+
+      .side-by-side > div > pre {
+        height: 100%;
+      }
     </style>
   </head>
   <body>
@@ -44,9 +60,27 @@
           </textarea>
         </section>
 
+        <section
+          data-background-image="assets/shot-by-cerqueira-0o_GEzyargo-unsplash.jpg"
+        >
+          <img src="assets/codestar_logo_dark_tagline.svg" width="40%" />
+          <br />
+          <br />
+          <div>
+            <img
+              style="display: inline-block; vertical-align: top; margin: 5px 0"
+              src="assets/github.svg"
+              width="5%"
+            />
+            <div style="display: inline-block; vertical-align: top">
+              github.com/mdvanes
+            </div>
+          </div>
+        </section>
+
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```html [1,8|2-4|5-7]
+            ```html [1-8|1,8|2-4|5-7|1-8]
             <html>
               <head>
                 <title>YOUR NAME</title>
@@ -59,14 +93,58 @@
 
             Note:
 
+            - TODO show inline example of text in HTML
             - html
             - https://jsfiddle.net/mdvanes/v1p9r0qa/
           </textarea>
         </section>
 
+        <!-- side-by-side view -->
+        <section class="side-by-side">
+          <div>
+            <textarea
+              style="
+                font-size: 1.2rem;
+                font-family: monospace;
+                height: calc(100% - 2rem);
+                width: 100%;
+                color: #ddd;
+                background-color: rgb(39, 40, 34);
+                padding: 1rem;
+                border: none;
+                width: calc(100% - 2rem);
+              "
+            >
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    Hello, World!
+  </body>
+</html>
+            </textarea>
+            <!-- <pre>
+              <code data-line-numbers="1,8|2-4|5-7">
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    Hello, World!
+  </body>
+</html>
+              </code>
+            </pre> -->
+          </div>
+          <div>
+            <iframe src="#" style="width: 100%; height: 100%"></iframe>
+          </div>
+        </section>
+
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```html []
+            ```html [6|7]
             <html>
               <head>
                 <title>YOUR NAME</title>
@@ -80,8 +158,28 @@
 
             Note:
 
-            - html
-            - https://jsfiddle.net/mdvanes/v1p9r0qa/
+            - TODO show inline example of H1
+            - or use <img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```html []
+            <html>
+              <head>
+                <title>YOUR NAME</title>
+              </head>
+              <body>
+                <h1>Hello, World!</h1>
+                <script>alert('Hello!')</script>
+              </body>
+            </html>
+            ```
+
+            Note:
+
+            - 
           </textarea>
         </section>
       </div>
