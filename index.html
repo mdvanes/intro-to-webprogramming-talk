@@ -73,7 +73,15 @@
       .side-by-side > div > iframe {
         height: calc(100% - 57px);
         width: 100%;
+        max-width: 100%;
         /* display: none; */
+      }
+
+      .side-by-side .chromes-chrome {
+        background-image: url('assets/chromes_chrome.png');
+        background-repeat: no-repeat;
+        padding-top: 47px;
+        background-size: 100%;
       }
     </style>
   </head>
@@ -185,7 +193,7 @@
             </pre> -->
           </div>
 
-          <div>
+          <div class="chromes-chrome">
             <!-- <button onclick="preview('hello-textarea', 'hello-iframe')">
               preview
             </button> -->
