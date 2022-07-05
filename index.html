@@ -150,13 +150,21 @@
           </textarea>
         </section>
 
-        <live-preview-section></live-preview-section>
-        <live-preview-section></live-preview-section>
-        <live-preview-section></live-preview-section>
-        <live-preview-section></live-preview-section>
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    Hello, World!
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
 
         <!-- side-by-side view -->
-        <section class="side-by-side" data-transition="slide-in none-out">
+        <!-- <section class="side-by-side" data-transition="slide-in none-out">
           <div>
             <textarea id="hello-textarea">
 <html>
@@ -168,7 +176,7 @@
   </body>
 </html>
             </textarea>
-            <!-- <pre>
+            < !-- <pre>
               <code data-line-numbers="1,8|2-4|5-7">
 <html>
   <head>
@@ -179,7 +187,7 @@
   </body>
 </html>
               </code>
-            </pre> -->
+            </pre> -- >
           </div>
 
           <div></div>
@@ -200,7 +208,7 @@
   </body>
 </html>
             </textarea>
-            <!-- <pre>
+            < !-- <pre>
               <code data-line-numbers="1,8|2-4|5-7">
 <html>
   <head>
@@ -211,21 +219,35 @@
   </body>
 </html>
               </code>
-            </pre> -->
+            </pre> -- >
           </div>
 
           <div class="chromes-chrome">
-            <!-- <button onclick="preview('hello-textarea', 'hello-iframe')">
+            < !-- <button onclick="preview('hello-textarea', 'hello-iframe')">
               preview
-            </button> -->
+            </button> -- >
             <iframe
               id="hello-iframe"
               src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
             ></iframe>
           </div>
-        </section>
+        </section> -->
 
-        <section class="side-by-side" data-transition="slide-in none-out">
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    <img src="hellothere.gif" />
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
+
+        <!-- START -->
+        <!-- <section class="side-by-side" data-transition="slide-in none-out">
           <div>
             <textarea>
 <html>
@@ -264,7 +286,7 @@
               src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
             ></iframe>
           </div>
-        </section>
+        </section> -->
         <!-- END -->
 
         <!-- START -->
@@ -413,21 +435,6 @@
         injectLivePreviewSections,
       } from "./js/live-preview.js";
 
-      // const elems = document.querySelectorAll("live-preview-section");
-      // console.log(elems.length, document.querySelectorAll("section").length);
-      // elems.forEach((elem) => {
-      //   console.log(elem.shadowRoot.querySelectorAll("section"));
-      //   elem.shadowRoot.querySelectorAll("section").forEach((section) => {
-      //     // elem.insertAdjacentElement(section);
-      //     // elem.parentNode.insertBefore(section, elem);
-      //     document.querySelector(".slides").appendChild(section);
-      //   });
-      //   elem.remove();
-      // });
-      // console.log(
-      //   document.querySelectorAll("live-preview-section"),
-      //   document.querySelectorAll("section").length
-      // );
       injectLivePreviewSections();
 
       // More info about initialization & config:

@@ -58,10 +58,13 @@ export function onSlideChangedUpdatePreview(event) {
 customElements.define(
   "live-preview-section",
   class LivePreviewSection extends HTMLElement {
+    // let shadowRoot;
+
     constructor() {
       super();
 
-      const shadowRoot = this.attachShadow({ mode: "open" });
+      //   this.shadowRoot =
+      this.attachShadow({ mode: "open" });
 
       // const style = document.createElement('style');
       // style.textContent = `
@@ -74,23 +77,9 @@ customElements.define(
       // shadowRoot.appendChild(style);
       //   const foo = document.createElement(`<div></div>`)
       //   shadowRoot.insertAdjacentHTML('beforeend', `<h1>foo</h1>`);
-      shadowRoot.innerHTML = `<section class="side-by-side auto-injected" data-transition="slide-in none-out">
+      this.shadowRoot.innerHTML = `<section class="side-by-side auto-injected" data-transition="slide-in none-out">
       <div>
-        
         <textarea>
-<html>
-<head>
-<title>YOUR NAME</title>
-</head>
-<body>
-<h1>Hello, World!!!</h1>
-<p>Lorem ipsum dolor sit amet.</p>
-<input />
-<button onclick="alert('Hi!')">
-  click me!
-</button>
-</body>
-</html>
         </textarea>
       </div>
 
@@ -103,19 +92,6 @@ customElements.define(
     >
       <div>
         <textarea>
-<html>
-<head>
-<title>YOUR NAME</title>
-</head>
-<body>
-<h1>TEST!</h1>
-<p>Lorem ipsum dolor sit amet.</p>
-<input />
-<button onclick="alert('Hi!')">
-  click me!
-</button>
-</body>
-</html>
         </textarea>
       </div>
 
@@ -126,18 +102,35 @@ customElements.define(
       </div>
     </section>`;
     }
+
+    connectedCallback() {
+      if (this.hasChildNodes()) {
+        // console.log("childnodes: ", this.childNodes);
+        this.childNodes.forEach((childElem) => {
+          if (childElem.localName === "textarea") {
+            // console.log(this.shadowRoot.querySelector("textarea"));
+            // this.shadowRoot.querySelector("textarea").innerHTML = childElem.innerHTML;
+            this.shadowRoot
+              .querySelectorAll("textarea")
+              .forEach((textAreaElem) => {
+                textAreaElem.innerHTML = childElem.innerHTML;
+              });
+          }
+        });
+      }
+    }
   }
 );
 
 export function injectLivePreviewSections() {
   const elems = document.querySelectorAll("live-preview-section");
-  console.log(
-    elems.length,
-    document.querySelectorAll("section").length,
-    document.querySelectorAll("section")
-  );
+  //   console.log(
+  //     elems.length,
+  //     document.querySelectorAll("section").length,
+  //     document.querySelectorAll("section")
+  //   );
   elems.forEach((elem) => {
-    console.log(elem.shadowRoot.querySelectorAll("section"));
+    // console.log(elem.shadowRoot.querySelectorAll("section"));
     elem.shadowRoot.querySelectorAll("section").forEach((section) => {
       // elem.insertAdjacentElement(section);
       elem.parentNode.insertBefore(section, elem);
@@ -148,9 +141,9 @@ export function injectLivePreviewSections() {
     // }, 100);
     elem.remove();
   });
-  console.log(
-    document.querySelectorAll("live-preview-section"),
-    document.querySelectorAll("section").length,
-    document.querySelectorAll("section")
-  );
+  //   console.log(
+  //     document.querySelectorAll("live-preview-section"),
+  //     document.querySelectorAll("section").length,
+  //     document.querySelectorAll("section")
+  //   );
 }
