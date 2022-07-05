@@ -25,7 +25,7 @@ function setPreview(slideElem) {
       body {
         font-size: 300%;
       }
-      input, button {
+      input, button, select {
         font-size: 100%;
       }
       </style>`;
@@ -54,3 +54,77 @@ export function onSlideChangedUpdatePreview(event) {
       .addEventListener("change", updatePreview);
   }
 }
+
+customElements.define(
+  "live-preview-section",
+  class LivePreviewSection extends HTMLElement {
+    constructor() {
+      super();
+
+      const shadowRoot = this.attachShadow({ mode: "open" });
+
+      // const style = document.createElement('style');
+      // style.textContent = `
+      //   div { padding: 10px; border: 1px solid gray; width: 200px; margin: 10px; }
+      //   h2 { margin: 0 0 10px; }
+      //   ul { margin: 0; }
+      //   p { margin: 10px 0; }
+      // `;
+
+      // shadowRoot.appendChild(style);
+      //   const foo = document.createElement(`<div></div>`)
+      //   shadowRoot.insertAdjacentHTML('beforeend', `<h1>foo</h1>`);
+      shadowRoot.innerHTML = `<section class="side-by-side" data-transition="slide-in none-out">
+      <div>
+        
+        <textarea>
+<html>
+<head>
+<title>YOUR NAME</title>
+</head>
+<body>
+<h1>Hello, World!!!</h1>
+<p>Lorem ipsum dolor sit amet.</p>
+<input />
+<button onclick="alert('Hi!')">
+  click me!
+</button>
+</body>
+</html>
+        </textarea>
+      </div>
+
+      <div></div>
+    </section>
+
+    <section
+      class="side-by-side update-preview"
+      data-transition="fade-in slide-out"
+    >
+      <div>
+        <textarea>
+<html>
+<head>
+<title>YOUR NAME</title>
+</head>
+<body>
+<h1>Hello, World!</h1>
+<p>Lorem ipsum dolor sit amet.</p>
+<input />
+<button onclick="alert('Hi!')">
+  click me!
+</button>
+</body>
+</html>
+        </textarea>
+      </div>
+
+      <div class="chromes-chrome">
+        <iframe
+          src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
+        ></iframe>
+      </div>
+    </section>`;
+    }
+  }
+);
