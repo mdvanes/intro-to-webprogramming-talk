@@ -58,25 +58,9 @@ export function onSlideChangedUpdatePreview(event) {
 customElements.define(
   "live-preview-section",
   class LivePreviewSection extends HTMLElement {
-    // let shadowRoot;
-
     constructor() {
       super();
-
-      //   this.shadowRoot =
       this.attachShadow({ mode: "open" });
-
-      // const style = document.createElement('style');
-      // style.textContent = `
-      //   div { padding: 10px; border: 1px solid gray; width: 200px; margin: 10px; }
-      //   h2 { margin: 0 0 10px; }
-      //   ul { margin: 0; }
-      //   p { margin: 10px 0; }
-      // `;
-
-      // shadowRoot.appendChild(style);
-      //   const foo = document.createElement(`<div></div>`)
-      //   shadowRoot.insertAdjacentHTML('beforeend', `<h1>foo</h1>`);
       this.shadowRoot.innerHTML = `<section class="side-by-side auto-injected" data-transition="slide-in none-out">
       <div>
         <textarea>
@@ -105,11 +89,8 @@ customElements.define(
 
     connectedCallback() {
       if (this.hasChildNodes()) {
-        // console.log("childnodes: ", this.childNodes);
         this.childNodes.forEach((childElem) => {
           if (childElem.localName === "textarea") {
-            // console.log(this.shadowRoot.querySelector("textarea"));
-            // this.shadowRoot.querySelector("textarea").innerHTML = childElem.innerHTML;
             this.shadowRoot
               .querySelectorAll("textarea")
               .forEach((textAreaElem) => {
@@ -124,26 +105,10 @@ customElements.define(
 
 export function injectLivePreviewSections() {
   const elems = document.querySelectorAll("live-preview-section");
-  //   console.log(
-  //     elems.length,
-  //     document.querySelectorAll("section").length,
-  //     document.querySelectorAll("section")
-  //   );
   elems.forEach((elem) => {
-    // console.log(elem.shadowRoot.querySelectorAll("section"));
     elem.shadowRoot.querySelectorAll("section").forEach((section) => {
-      // elem.insertAdjacentElement(section);
       elem.parentNode.insertBefore(section, elem);
-      //   document.querySelector(".slides").appendChild(section.cloneNode(true));
     });
-    // setTimeout(() => {
-    //   document.querySelector(".slides").remove(elem);
-    // }, 100);
     elem.remove();
   });
-  //   console.log(
-  //     document.querySelectorAll("live-preview-section"),
-  //     document.querySelectorAll("section").length,
-  //     document.querySelectorAll("section")
-  //   );
 }
