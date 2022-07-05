@@ -74,7 +74,7 @@ customElements.define(
       // shadowRoot.appendChild(style);
       //   const foo = document.createElement(`<div></div>`)
       //   shadowRoot.insertAdjacentHTML('beforeend', `<h1>foo</h1>`);
-      shadowRoot.innerHTML = `<section class="side-by-side" data-transition="slide-in none-out">
+      shadowRoot.innerHTML = `<section class="side-by-side auto-injected" data-transition="slide-in none-out">
       <div>
         
         <textarea>
@@ -98,7 +98,7 @@ customElements.define(
     </section>
 
     <section
-      class="side-by-side update-preview"
+      class="side-by-side update-preview auto-injected"
       data-transition="fade-in slide-out"
     >
       <div>
@@ -108,7 +108,7 @@ customElements.define(
 <title>YOUR NAME</title>
 </head>
 <body>
-<h1>Hello, World!</h1>
+<h1>TEST!</h1>
 <p>Lorem ipsum dolor sit amet.</p>
 <input />
 <button onclick="alert('Hi!')">
@@ -128,3 +128,29 @@ customElements.define(
     }
   }
 );
+
+export function injectLivePreviewSections() {
+  const elems = document.querySelectorAll("live-preview-section");
+  console.log(
+    elems.length,
+    document.querySelectorAll("section").length,
+    document.querySelectorAll("section")
+  );
+  elems.forEach((elem) => {
+    console.log(elem.shadowRoot.querySelectorAll("section"));
+    elem.shadowRoot.querySelectorAll("section").forEach((section) => {
+      // elem.insertAdjacentElement(section);
+      elem.parentNode.insertBefore(section, elem);
+      //   document.querySelector(".slides").appendChild(section.cloneNode(true));
+    });
+    // setTimeout(() => {
+    //   document.querySelector(".slides").remove(elem);
+    // }, 100);
+    elem.remove();
+  });
+  console.log(
+    document.querySelectorAll("live-preview-section"),
+    document.querySelectorAll("section").length,
+    document.querySelectorAll("section")
+  );
+}

@@ -87,12 +87,21 @@
         padding-top: 47px;
         background-size: 100%;
       }
+
+      live-preview-section {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown data-background-image="assets/hq.jpg" data-background-opacity="0.3" data-background-opacity="0.3">
+        <section
+          data-markdown
+          data-background-image="assets/hq.jpg"
+          data-background-opacity="0.3"
+          data-background-opacity="0.3"
+        >
           <textarea data-template data-line-numbers>
             # Introduction to (web) programming <!-- .element: class="deck-title" -->
 
@@ -140,6 +149,11 @@
             - https://jsfiddle.net/mdvanes/v1p9r0qa/
           </textarea>
         </section>
+
+        <live-preview-section></live-preview-section>
+        <live-preview-section></live-preview-section>
+        <live-preview-section></live-preview-section>
+        <live-preview-section></live-preview-section>
 
         <!-- side-by-side view -->
         <section class="side-by-side" data-transition="slide-in none-out">
@@ -372,8 +386,6 @@
           </textarea>
         </section>
 
-        <!-- <live-preview-section /> -->
-
         <section data-markdown>
           <textarea data-template data-line-numbers>
             ```js []
@@ -396,7 +408,27 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script type="module">
-      import { onSlideChangedUpdatePreview } from "./js/live-preview.js";
+      import {
+        onSlideChangedUpdatePreview,
+        injectLivePreviewSections,
+      } from "./js/live-preview.js";
+
+      // const elems = document.querySelectorAll("live-preview-section");
+      // console.log(elems.length, document.querySelectorAll("section").length);
+      // elems.forEach((elem) => {
+      //   console.log(elem.shadowRoot.querySelectorAll("section"));
+      //   elem.shadowRoot.querySelectorAll("section").forEach((section) => {
+      //     // elem.insertAdjacentElement(section);
+      //     // elem.parentNode.insertBefore(section, elem);
+      //     document.querySelector(".slides").appendChild(section);
+      //   });
+      //   elem.remove();
+      // });
+      // console.log(
+      //   document.querySelectorAll("live-preview-section"),
+      //   document.querySelectorAll("section").length
+      // );
+      injectLivePreviewSections();
 
       // More info about initialization & config:
       // - https://revealjs.com/initialization/
