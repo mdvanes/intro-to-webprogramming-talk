@@ -1,9 +1,9 @@
-function preview(src, target) {
-  document.getElementById(target).style.display = "block";
-  document.getElementById(target).src =
-    "data:text/html;charset=utf-8," +
-    encodeURIComponent(document.getElementById(src).value);
-}
+// function preview(src, target) {
+//   document.getElementById(target).style.display = "block";
+//   document.getElementById(target).src =
+//     "data:text/html;charset=utf-8," +
+//     encodeURIComponent(document.getElementById(src).value);
+// }
 
 function replaceSrc(value) {
   const srcIndex = value.indexOf(' src="');
@@ -13,7 +13,7 @@ function replaceSrc(value) {
   return value;
 }
 
-function setPreview(slideElem) {
+export function setPreview(slideElem) {
   const value = slideElem.querySelector("textarea").value;
   const splitAt = value.indexOf("<head>") + "<head>".length;
   const part1 = value.substring(0, splitAt);
@@ -36,10 +36,6 @@ function setPreview(slideElem) {
 }
 
 function updatePreview(event) {
-  // console.log(
-  //   event.target.value,
-  //   event.target.parentElement.parentElement
-  // );
   const slideElem = event.target.parentElement.parentElement;
   setPreview(slideElem);
 }

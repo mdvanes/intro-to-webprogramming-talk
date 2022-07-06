@@ -455,6 +455,7 @@
       import {
         onSlideChangedUpdatePreview,
         injectLivePreviewSections,
+        setPreview
       } from "./js/live-preview.js";
 
       injectLivePreviewSections();
@@ -481,6 +482,11 @@
           showNotes: "separate-page",
           slideNumber: "c/t",
           pdfSeparateFragments: false,
+        });
+
+        const previewSlideSections = document.querySelectorAll(".update-preview");
+        previewSlideSections.forEach((previewSlideSection) => {
+          setPreview(previewSlideSection);
         });
       }
 
