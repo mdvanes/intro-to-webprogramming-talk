@@ -91,6 +91,10 @@
       live-preview-section {
         display: none;
       }
+
+      .reveal img.no-pad {
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -279,14 +283,13 @@
           </textarea>
         </live-preview-section>
 
-        <!-- TODO update html-diagram.png here -->
         <section
           data-markdown
           data-background-color="#fff9ea"
           data-background-size="contain"
         >
           <textarea data-template data-line-numbers>
-          ![HTML Diagram](assets/html-diagram.svg)
+          ![HTML Diagram](assets/html-diagram.svg) <!-- .element: class="no-pad" -->
           
           Note:
           - ?
