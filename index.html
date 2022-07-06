@@ -95,6 +95,10 @@
       .reveal img.no-pad {
         margin: 0;
       }
+
+      html.print-pdf .reveal .slides .pdf-page .side-by-side {
+        display: flex !important;
+      }
     </style>
   </head>
   <body>
@@ -103,7 +107,6 @@
         <section
           data-markdown
           data-background-image="assets/hq.jpg"
-          data-background-opacity="0.3"
           data-background-opacity="0.3"
         >
           <textarea data-template data-line-numbers>
@@ -306,10 +309,6 @@
               </section>
             </main>
             ```
-
-            Note:
-
-            - 
           </textarea>
         </section>
 
@@ -323,16 +322,12 @@
               ...
             </section>
             ```
-
-            Note:
-
-            - 
           </textarea>
         </section>
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```js [3,6|4-5]
+            ```html [3,6|4-5]
             <section>
               ...
               <ol>
@@ -342,16 +337,12 @@
               ...
             </section>
             ```
-
-            Note:
-
-            - 
           </textarea>
         </section>
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```js [3|4,7|5-6]
+            ```html [3|4,7|5-6]
             <section>
               ...
               <input />
@@ -362,16 +353,12 @@
               ...
             </section>
             ```
-
-            Note:
-
-            - 
           </textarea>
         </section>
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```js [3|4|5-7]
+            ```html [3|4|5-7]
             <section>
               ...
               <a href="https://www.ordina.nl">link</a>
@@ -389,15 +376,42 @@
           </textarea>
         </section>
 
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+    <style>
+      h1 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
+
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```js []
-            TODO: CSS
+            ```css []
+            h1 {
+              background-color: palegoldenrod;
+              border: 1px solid;
+              border-radius: 14px;
+              color: rebeccapurple;
+              margin: 10px;
+            }
             ```
 
             Note:
 
-            - TODO CSS
+            - TODO CSS. color, background-color, border/width/style/radius, margin, https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+            - try it out! (with the large HTML example)
+            - https://mzl.la/3AvfQeR or https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color_keywords
+            - by tag name. Also by classname?
           </textarea>
         </section>
 

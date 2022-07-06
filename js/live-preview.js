@@ -81,7 +81,7 @@ customElements.define(
 
       <div class="chromes-chrome">
         <iframe
-          src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
+          src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3ENot%20Initialized%3C/body%3E%3C/html%3E"
         ></iframe>
       </div>
     </section>`;
