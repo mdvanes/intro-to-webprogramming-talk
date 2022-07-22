@@ -114,7 +114,8 @@
 
             Note:
 
-            * 2 hour session
+            - 2 hour session
+            - What are your expectations?
           </textarea>
         </section>
 
@@ -417,6 +418,93 @@
             - script tag
           </textarea>
         </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            $$ z = x + y $$
+
+            ```javascript [1-6|1-3|5|6]
+            function add(x, y) {
+              return x + y;
+            }
+
+            const z = add(1, 2)
+            /* z = 3 */
+            ```
+
+            Note:
+
+            - Who here likes maths? (I do) Who is good at it? (not me)
+            - Side step, just a more advanced example
+            - maths, part 1 of 3
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            $$ ax^2 + bx + c = 0 $$  <!-- .element: class="large" -->
+            $$ \frac{1}{2}x^2 - \frac{5}{2}x + 2 = y $$  <!-- .element: class="large" -->
+            $$ x = \frac{-b \plusmn \sqrt{b^2 - 4ac}}{2a} $$  <!-- .element: class="large" -->
+
+            Note:
+
+            - Solve quadratic formula, find its roots
+            - for discriminant (b^2 - 4ac) > 0
+            - maths, part 2 of 3
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript []
+            function solveQuadratic(a,b,c) {
+              const discriminant = Math.pow(b, 2) - (4*a*c);
+              const solution1 = (-b + Math.sqrt(discriminant)) / (2*a);
+              const solution2 = (-b - Math.sqrt(discriminant)) / (2*a);
+              return [solution1, solution2];
+            }
+            console.log(solveQuadratic(0.5, -2.5, 2))
+            ```
+
+            Note:
+
+            - maths, part 3 of 3
+          </textarea>
+        </section>
+
+        <!-- TODO: Merchandise webshop () -->
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    <main>
+      <section>
+<h1>Swag!</h1>
+<img src="b0.jpg" />
+<p>Lorem ipsum dolor sit amet.</p>
+<ol>
+  <li>write code</li>
+  <li>profit!</li>
+</ol>
+<input />
+<select>
+  <option>red</option>
+  <option>green</option>
+</select>
+<a href="https://www.ordina.nl">link</a>
+<hr />
+<button onclick="alert('Hi!')">
+  click me!
+</button>
+      </section>
+    </main>
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
       </div>
     </div>
 
@@ -424,6 +512,7 @@
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
     <script type="module">
       import {
         onSlideChangedUpdatePreview,
@@ -446,7 +535,12 @@
         // slideNumber: "c/t",
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
       });
 
       if (document.location.search === "?print-pdf") {
