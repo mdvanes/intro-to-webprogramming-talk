@@ -138,6 +138,12 @@
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
+            # HTML
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
             ```html [1-8|1,8|2-4|5-7|1-8]
             <html>
               <head>
@@ -169,76 +175,6 @@
 </html>
           </textarea>
         </live-preview-section>
-
-        <!-- side-by-side view -->
-        <!-- <section class="side-by-side" data-transition="slide-in none-out">
-          <div>
-            <textarea id="hello-textarea">
-<html>
-  <head>
-    <title>YOUR NAME</title>
-  </head>
-  <body>
-    Hello, World!
-  </body>
-</html>
-            </textarea>
-            < !-- <pre>
-              <code data-line-numbers="1,8|2-4|5-7">
-<html>
-  <head>
-    <title>YOUR NAME</title>
-  </head>
-  <body>
-    Hello, World!
-  </body>
-</html>
-              </code>
-            </pre> -- >
-          </div>
-
-          <div></div>
-        </section>
-
-        <section
-          class="side-by-side update-preview"
-          data-transition="fade-in slide-out"
-        >
-          <div>
-            <textarea id="hello-textarea">
-<html>
-  <head>
-    <title>YOUR NAME</title>
-  </head>
-  <body>
-    Hello, World!
-  </body>
-</html>
-            </textarea>
-            < !-- <pre>
-              <code data-line-numbers="1,8|2-4|5-7">
-<html>
-  <head>
-    <title>YOUR NAME</title>
-  </head>
-  <body>
-    Hello, World!
-  </body>
-</html>
-              </code>
-            </pre> -- >
-          </div>
-
-          <div class="chromes-chrome">
-            < !-- <button onclick="preview('hello-textarea', 'hello-iframe')">
-              preview
-            </button> -- >
-            <iframe
-              id="hello-iframe"
-              src="data:text/html;charset=utf-8,%3Chtml%3E%3Cbody%3Efoo%3C/body%3E%3C/html%3E"
-            ></iframe>
-          </div>
-        </section> -->
 
         <live-preview-section>
           <textarea>
@@ -295,7 +231,7 @@
           ![HTML Diagram](assets/html-diagram.svg) <!-- .element: class="no-pad" -->
           
           Note:
-          - ?
+          - It's a tree! Upside down, with a root and with leafs
       </textarea
           >
         </section>
@@ -376,6 +312,12 @@
           </textarea>
         </section>
 
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            # CSS
+          </textarea>
+        </section>
+
         <live-preview-section>
           <textarea>
 <html>
@@ -396,52 +338,83 @@
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```css []
+            ```css [2|3|4|5|6|7]
             h1 {
               background-color: palegoldenrod;
               border: 1px solid;
               border-radius: 14px;
               color: rebeccapurple;
               margin: 10px;
+              /* colors: https://mzl.la/3AvfQeR */
             }
             ```
 
             Note:
 
-            - TODO CSS. color, background-color, border/width/style/radius, margin, https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
             - try it out! (with the large HTML example)
-            - https://mzl.la/3AvfQeR or https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color_keywords
+            - Color keywords: https://mzl.la/3AvfQeR or https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color_keywords
             - by tag name. Also by classname?
           </textarea>
         </section>
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```html [2]
-            <section>
-              <script>alert('Hello!')</script>
-            </section>
-            ```
-
-            Note:
-
-            - explain script and alert();
-            - or use `<img src="https://github.com/mdvanes/intro-to-webprogramming-talk/raw/main/assets/hellothere.gif" />`
+            # JavaScript
           </textarea>
         </section>
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```js []
-            alert('Hi!')
-            console.log('Hi!')
+            ```html [1|4]
+            <button onclick="alert('Hi!')">
+              click me!
+            </button>
+            <button onclick="console.log('Hi!')">
+              click me!
+            </button>
+            ```
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```html [1|6,10|7-9]
+            <button onclick="myFirstFunction()">
+              click me!
+            </button>
+            ...
+            </main>
+            <script>
+              function myFirstFunction() {
+                console.log('Hi!');
+              }
+            </script>
+            </body>
             ```
 
             Note:
 
-            - script
+            - script tag
             - function
-            - how to run it for them? in alert? console.log? console.log seems logical
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript [1-3|5,6,8|7]
+            function myFirstFunction() {
+              sayHello('World')
+            }
+
+            function sayHello(name) {
+              console.log('Hello, ' + name + '!')
+              /* Hello, World! */
+            }
+            ```
+
+            Note:
+
+            - script tag
           </textarea>
         </section>
       </div>
@@ -455,7 +428,7 @@
       import {
         onSlideChangedUpdatePreview,
         injectLivePreviewSections,
-        setPreview
+        setPreview,
       } from "./js/live-preview.js";
 
       injectLivePreviewSections();
@@ -484,7 +457,8 @@
           pdfSeparateFragments: false,
         });
 
-        const previewSlideSections = document.querySelectorAll(".update-preview");
+        const previewSlideSections =
+          document.querySelectorAll(".update-preview");
         previewSlideSections.forEach((previewSlideSection) => {
           setPreview(previewSlideSection);
         });
