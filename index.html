@@ -474,13 +474,6 @@
           </textarea>
         </section>
 
-        <!-- TODO: Merchandise webshop ()
-          - stretch goals:
-            - introduce boolean and array types
-            - conditions (with booleans)
-            - iteration (with arrays)
-            - shopping basket with (native) confirm window to show "if" condition and "foreach" iteration
-         -->
         <live-preview-section>
           <textarea>
 <html>
@@ -521,7 +514,6 @@
 </html>
           </textarea>
         </live-preview-section>
-
 
         <live-preview-section>
           <textarea>
@@ -618,7 +610,88 @@ function show() {
           </textarea>
         </live-preview-section>
 
+        <!-- TODO:
+          - stretch goals:
+            - introduce boolean and array types
+            - conditions (with booleans)
+            - iteration (with arrays)
+            - shopping basket with (native) confirm window to show "if" condition and "foreach" iteration
+            - integrate with rest of the shop?
+            - test full screen MS Teams screen share
+            - send them mail with zip with assets (gif/jpg)
+         -->
 
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    <main>
+      <section>
+<button onclick="checkout()">
+  shopping basket
+</button>
+
+<hr />
+
+<div id="result"></div>
+      </section>
+    </main>
+    <script>
+const items = ["shirt 1", "shirt 2"];
+function show() {
+  items.push('shirt'); // TODO use existing show and add text. Add .push in the tie-together step
+}      
+function checkout() {
+  let confirmMessage = "Do you really want to buy this? ";
+  for(const item of items) {
+    confirmMessage = confirmMessage + "\n* " + item;
+  }
+  const isConfirmed = confirm(confirmMessage)
+  if(isConfirmed) {
+    alert("Your shirts are on their way!");
+  }
+}
+    </script>
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript [1|2|3-5]
+            const items = ["shirt 1", "shirt 2"];
+            items.push("shirt 3");
+            for(const item of items) {
+              console.log(item);
+            }
+            ```
+
+            Note:
+
+            -
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript [1|2-3|4-6]
+            const is1SmallerThan2 = 1 < 2; // true
+            if(is1SmallerThan2) {
+              console.log("It is!");
+            } else {
+              console.log("It is not!");
+            }
+            ```
+
+            Note:
+
+            -
+          </textarea>
+        </section>
 
       </div>
     </div>
