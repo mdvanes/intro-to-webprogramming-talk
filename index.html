@@ -99,6 +99,10 @@
       html.print-pdf .reveal .slides .pdf-page .side-by-side {
         display: flex !important;
       }
+
+      img.book {
+        height: 40vh;
+      }
     </style>
   </head>
   <body>
@@ -471,6 +475,7 @@
             Note:
 
             - maths, part 3 of 3
+            - this is an algorithm, by the way
           </textarea>
         </section>
 
@@ -613,12 +618,13 @@ function show() {
         <!-- TODO:
           - stretch goals:
             - introduce boolean and array types
-            - conditions (with booleans)
+            - conditions (with booleans)is1SmallerThan2
             - iteration (with arrays)
             - shopping basket with (native) confirm window to show "if" condition and "foreach" iteration
             - integrate with rest of the shop?
             - test full screen MS Teams screen share
             - send them mail with zip with assets (gif/jpg)
+            - Objects
          -->
 
         <live-preview-section>
@@ -641,9 +647,7 @@ function show() {
     </main>
     <script>
 const items = ["shirt 1", "shirt 2"];
-function show() {
-  items.push('shirt'); // TODO use existing show and add text. Add .push in the tie-together step
-}      
+   
 function checkout() {
   let confirmMessage = "Do you really want to buy this? ";
   for(const item of items) {
@@ -672,7 +676,27 @@ function checkout() {
 
             Note:
 
-            -
+            - array (like a list)
+            - push to add
+            - for, to iterate
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript [1|3|4-6]
+            const items = ["shirt 1", "shirt 2"];
+            ...
+            let confirmMessage = "Do you really want to buy this? ";
+            for(const item of items) {
+              confirmMessage = confirmMessage + "\n* " + item;
+            }
+            // Do you really want to buy this? \n* shirt 1 \n* shirt 2
+            ```
+
+            Note:
+
+            - string concatenation
           </textarea>
         </section>
 
@@ -689,7 +713,32 @@ function checkout() {
 
             Note:
 
-            -
+            - condition
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript [1|2-4]
+            const isConfirmed = confirm(confirmMessage)
+            if(isConfirmed) {
+              alert("Your shirts are on their way!");
+            }
+            ```
+
+            Note:
+
+            - confirm vs alert
+          </textarea>
+        </section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ![](assets/evans_broad_band.jpg) <!-- .element: class="book" -->
+
+            Note:
+
+            - Further reading; historical background
           </textarea>
         </section>
 
