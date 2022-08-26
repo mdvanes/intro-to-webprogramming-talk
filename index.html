@@ -615,18 +615,6 @@ function show() {
           </textarea>
         </live-preview-section>
 
-        <!-- TODO:
-          - stretch goals:
-            - introduce boolean and array types
-            - conditions (with booleans)is1SmallerThan2
-            - iteration (with arrays)
-            - shopping basket with (native) confirm window to show "if" condition and "foreach" iteration
-            - integrate with rest of the shop?
-            - test full screen MS Teams screen share
-            - send them mail with zip with assets (gif/jpg)
-            - Objects
-         -->
-
         <live-preview-section>
           <textarea>
 <html>
@@ -732,6 +720,148 @@ function checkout() {
           </textarea>
         </section>
 
+        <live-preview-section>
+          <textarea>
+<html>
+  <head>
+    <title>YOUR NAME</title>
+    <style>
+html, body {
+  height: auto;
+  margin: 0;
+}
+main {
+  font-family: sans-serif;
+}
+h1 {
+  background-color: darkorange;
+  color: white;
+  padding: 10px;
+}
+p {
+  margin: 20px;
+}
+ol {
+  margin: 10px;
+  padding: 0;
+}
+li {
+  display: flex;
+  margin: 10px;
+}
+li label {
+  flex: 1;
+}
+li input, li select {
+  flex: 2;
+  width: 100%;
+}
+button {
+  background-color: darkorange;
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  margin: 20px;
+}
+div {
+  color: white;
+  font-family: monospace;
+  margin-bottom: 50px;
+  margin: 20px;
+  min-height: 30px;
+  padding: 10px;
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+<h1>SWAG!</h1>
+
+<p>Make your own t-shirt:</p>
+<ol>
+  <li>
+    <label>text:</label>
+    <input id="text" />
+  </li>
+  <li>
+    <label>color:</label>
+    <select id="color">
+      <option>red</option>
+      <option>green</option>
+    </select>
+  </li>
+</ol>
+
+<button onclick="show()">
+  show me!
+</button>
+
+<hr />
+
+<div id="result"></div>
+
+<hr />
+
+<button onclick="add()">
+  add to basket
+</button>
+
+<button onclick="checkout()">
+  shopping basket
+</button>
+      </section>
+    </main>
+    <script>
+function show() {
+  document.getElementById('result').innerText = document.getElementById('text').value;
+  document.getElementById('result').style.backgroundColor = document.getElementById('color').value;
+}
+const items = [];
+
+function add() {
+  let name = document.getElementById('text').value + " (" + document.getElementById('color').value + ")";
+  items.push(name);
+  alert("Added to basket: " + name);
+}
+   
+function checkout() {
+  let confirmMessage = "Do you really want to buy this? ";
+  for(const item of items) {
+    confirmMessage = confirmMessage + "\n* " + item;
+  }
+  const isConfirmed = confirm(confirmMessage)
+  if(isConfirmed) {
+    alert("Your shirts are on their way!");
+  }
+}
+    </script>
+  </body>
+</html>
+          </textarea>
+        </live-preview-section>
+
+        <section data-markdown>
+          <textarea data-template data-line-numbers>
+            ```javascript []
+            const items = [ ];
+
+            function add() {
+              let name = document.getElementById('text').value 
+               + " (" + document.getElementById('color').value + ")";
+              items.push(name);
+              alert("Added to basket: " + name);
+            }
+            ```
+
+            Note:
+
+            - this was the last bit to integrate everything
+          </textarea>
+        </section>
+
         <section data-markdown>
           <textarea data-template data-line-numbers>
             ![](assets/evans_broad_band.jpg) <!-- .element: class="book" -->
@@ -741,6 +871,13 @@ function checkout() {
             - Further reading; historical background
           </textarea>
         </section>
+
+        <!-- TODO:
+          - stretch goals:
+            - test full screen MS Teams screen share
+            - send them mail with zip with assets (gif/jpg)
+            - Objects
+         -->
 
       </div>
     </div>
