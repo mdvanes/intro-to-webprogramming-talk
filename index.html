@@ -193,7 +193,8 @@
             Note:
 
             - Make your index.html
-            - how html works
+            - Place editor and browser side-by-side
+            - How HTML works
             - https://jsfiddle.net/mdvanes/v1p9r0qa/
           </textarea>
         </section>
@@ -404,7 +405,7 @@
             <button onclick="alert('Hi!')">
               click me!
             </button>
-            <button onclick="console.log('Hi!')">
+            <button onclick="document.write('Hi!')">
               click me!
             </button>
             ```
@@ -421,7 +422,7 @@
             </main>
             <script>
               function myFirstFunction() {
-                console.log('Hi!');
+                alert('Hi!');
               }
             </script>
             </body>
@@ -442,7 +443,7 @@
             }
 
             function sayHello(name) {
-              console.log('Hello, ' + name + '!')
+              alert('Hello, ' + name + '!')
               /* Hello, World! */
             }
             ```
@@ -500,7 +501,7 @@
                 Math.sqrt(discriminant)) / (2*a);
               return [solution1, solution2];
             }
-            console.log(solveQuadratic(0.5, -2.5, 2))
+            alert(solveQuadratic(0.5, -2.5, 2))
             ```
 
             Note:
@@ -690,7 +691,7 @@ function checkout() {
 const items = ["shirt 1", "shirt 2"];
 items.push("shirt 3");
 for(const item of items) {
-  console.log(item);
+  alert(item);
 }
 </textarea>
         </section> -->
@@ -701,7 +702,7 @@ for(const item of items) {
             const items = ["shirt 1", "shirt 2"];
             items.push("shirt 3");
             for(const item of items) {
-              console.log(item);
+              alert(item);
             }
             ```
 
@@ -739,9 +740,9 @@ for(const item of items) {
             ```javascript [1|2-3|4-6]
             const is1SmallerThan2 = 1 < 2; // true
             if(is1SmallerThan2) {
-              console.log("It is!");
+              alert("It is!");
             } else {
-              console.log("It is not!");
+              alert("It is not!");
             }
             ```
 
@@ -933,7 +934,7 @@ function checkout() {
         <!-- TODO:
           - Preparation
             - test full screen MS Teams screen share -> needs to share full screen otherwise alert does not work, and use second monitor for speaker notes -> now possible without second monitor because of Alert Polyfill
-            - send them mail with zip with assets (gif/jpg)
+            - send them mail with zip with assets (hellothere.gif, b0.jpg, [0-9]{2}_*.html, optionally empty index.html)
           - Stretch goals:
             - Objects (data structures)
             - HTML elements (inputs date/time pickers, color pickers)
@@ -975,7 +976,6 @@ function checkout() {
                 - File > Save... > Save As index.html, Where: Desktop
             * 3 hours instead of 2 hours, not remote, extra developer to assist with workshop
             * Shortcuts to open dev tools for console.log in all browsers:
-              - REPLACE ALL console.log by alert() (and for the first example, use document.write()) -> leave console.log out of the workshop
               - Safari: https://wickedlysmart.com/hfhtml5/devtools.html#:~:text=To%20access%20the%20Safari%20Developer,a%20new%20Develop%20menu%20appear.
                 - enable developer menu in preferences > advanced
                 - cmd + option + i / alt + win + i
