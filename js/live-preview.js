@@ -28,8 +28,75 @@ export function setPreview(slideElem) {
       input, button, select {
         font-size: 100%;
       }
+      dialog {
+        border-radius: 16px;
+        width: 50%;
+      }
+      dialog button {
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      dialog button#cancel {
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+      }
+      dialog button#ok {
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+      }
       </style>`;
-  const withStyles = [part1, injectStyle, part2].join("");
+      const injectPolyfill = `<dialog id="alert-polyfill">
+        <section></section>
+        <button>OK</button>
+      </dialog>
+      <dialog id="confirm-polyfill">
+        <section></section>
+        <button id="cancel">Cancel</button>
+        <button id="ok">OK</button>
+      </dialog>
+      <script>
+      window.alert = (msg) => {
+        document.querySelector('#alert-polyfill > section').textContent = msg;
+        const dialogElem = document.getElementById('alert-polyfill');
+        dialogElem.showModal();
+      };
+      document.querySelector('#alert-polyfill > button').addEventListener('click', () => {
+        const dialogElem = document.getElementById('alert-polyfill');
+        dialogElem.close();
+      })
+      function replaceLinebreaks(msg) {
+        return msg.replace(/\\n/g, '<br />');
+      }
+      let confirmState = undefined;
+      let timer = undefined;
+      window.confirm = (msg) => {
+        confirmState = undefined;
+        document.querySelector('#confirm-polyfill > section').innerHTML = replaceLinebreaks(msg);
+        const dialogElem = document.getElementById('confirm-polyfill');
+        dialogElem.showModal();
+        // timer = setInterval(() => {
+        //   if(typeof confirmState !== 'undefined') {
+        //     console.log(confirmState);
+        //     clearInterval(timer);
+        //     return confirmState;
+        //   }
+        // }, 1000);
+        // return true;
+      };
+      document.querySelector('#confirm-polyfill > button#cancel').addEventListener('click', () => {
+        const dialogElem = document.getElementById('confirm-polyfill');
+        dialogElem.close();
+        confirmState = false;
+      })
+      document.querySelector('#confirm-polyfill > button#ok').addEventListener('click', () => {
+        const dialogElem = document.getElementById('confirm-polyfill');
+        dialogElem.close();
+        confirmState = true;
+      })
+      </script>`
+  const withStyles = [part1, injectStyle, injectPolyfill, part2].join("");
   const withSrcPaths = replaceSrc(withStyles);
   slideElem.querySelector("iframe").src =
     "data:text/html;charset=utf-8," + encodeURIComponent(withSrcPaths);
