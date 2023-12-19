@@ -38,7 +38,11 @@
         height: 100%;
       }
 
-      .side-by-side > div {
+      .side-by-side > div:first-child {
+        flex: 1.2;
+      }
+
+      .side-by-side > div:last-child {
         flex: 1;
       }
 
@@ -51,19 +55,18 @@
         background: url("assets/line-numbers.png");
         background-attachment: local;
         background-repeat: no-repeat;
-        background-size: 1.57rem; /* width height */
+        background-size: 3.14rem; /* width height */
         background-position-y: 0.4rem;
-        padding-left: 35px;
+        padding-left: 70px;
         padding-top: 5px;
         /* border-color:#ccc; */
-        font-size: 1.2rem;
+        font-size: 2.4rem;
         /* font-family: monospace; */
         height: calc(100% - 2rem);
-        width: 100%;
+        width: calc(100% - 70px);
         color: #ddd;
         background-color: rgb(39, 40, 34);
         border: none;
-        width: calc(100% - 2rem);
       }
 
       .side-by-side > div textarea::selection {
@@ -94,6 +97,10 @@
 
       .reveal img.no-pad {
         margin: 0;
+      }
+
+      .reveal img.height100vh {
+        height: 100vh;
       }
 
       html.print-pdf .reveal .slides .pdf-page .side-by-side {
@@ -133,7 +140,7 @@
 
             Note:
 
-            - 2 hour session
+            - 3 hour session
             - What are your expectations?
             - Not CS, but how I learned it
             - Mostly by example, very little theory. But asks questions!
@@ -247,10 +254,9 @@
         <section
           data-markdown
           data-background-color="#fff9ea"
-          data-background-size="contain"
         >
           <textarea data-template data-line-numbers>
-          ![HTML Diagram](assets/html-diagram.svg) <!-- .element: class="no-pad" -->
+          ![HTML Diagram](assets/html-diagram.svg) <!-- .element: class="no-pad height100vh" -->
           
           Note:
           - For previous page, copy with linebreaks from: https://raw.githubusercontent.com/mdvanes/intro-to-webprogramming-talk/main/assets/lorem.html
@@ -480,9 +486,12 @@
           <textarea data-template data-line-numbers>
             ```javascript []
             function solveQuadratic(a,b,c) {
-              const discriminant = Math.pow(b, 2) - (4*a*c);
-              const solution1 = (-b + Math.sqrt(discriminant)) / (2*a);
-              const solution2 = (-b - Math.sqrt(discriminant)) / (2*a);
+              const discriminant = Math.pow(b, 2) 
+                - (4*a*c);
+              const solution1 = (-b + 
+                Math.sqrt(discriminant)) / (2*a);
+              const solution2 = (-b - 
+                Math.sqrt(discriminant)) / (2*a);
               return [solution1, solution2];
             }
             console.log(solveQuadratic(0.5, -2.5, 2))
@@ -688,14 +697,17 @@ function checkout() {
 
         <section data-markdown>
           <textarea data-template data-line-numbers>
-            ```javascript [1|3|4-6]
+            ```javascript [1|3-4|5-8]
             const items = ["shirt 1", "shirt 2"];
             ...
-            let confirmMessage = "Do you really want to buy this? ";
+            let confirmMessage = 
+              "Do you really want to buy this? ";
             for(const item of items) {
-              confirmMessage = confirmMessage + "\n* " + item;
+              confirmMessage = confirmMessage + "\n* "
+               + item;
             }
-            // Do you really want to buy this? \n* shirt 1 \n* shirt 2
+            // Do you really want to buy 
+            // this? \n* shirt 1 \n* shirt 2
             ```
 
             Note:
@@ -865,8 +877,11 @@ function checkout() {
             const items = [ ];
 
             function add() {
-              let name = document.getElementById('text').value 
-               + " (" + document.getElementById('color').value + ")";
+              let name = 
+                document.getElementById('text').value 
+                + " (" + 
+                document.getElementById('color').value 
+                + ")";
               items.push(name);
               alert("Added to basket: " + name);
             }
@@ -898,9 +913,10 @@ function checkout() {
         </section>
 
         <!-- TODO:
-          - stretch goals:
+          - Preparation
             - test full screen MS Teams screen share -> needs to share full screen otherwise alert does not work, and use second monitor for speaker notes
             - send them mail with zip with assets (gif/jpg)
+          - Stretch goals:
             - Objects (data structures)
             - HTML elements (inputs date/time pickers, color pickers)
 
@@ -933,21 +949,23 @@ function checkout() {
                 - Click that link. You should see your site, and you can send this link to your friends.
 
             * screenshot guide for "saving your first index.html" in Windows and on Mac. textwriter, why auto uppercases?
-              - TextEdit
+              - provide empty index.html or show steps for saving from scratch. Can be on Desktop.
+              - Windows: Notepad
+              - Mac: TextEdit
                 - Format > Make plain text
                 - Edit > Spelling & Grammar > disable "Correct Spelling Automatically"
                 - File > Save... > Save As index.html, Where: Desktop
             * 3 hours instead of 2 hours, not remote, extra developer to assist with workshop
-            * note shortcuts to open dev tools for console.log in all browsers. Try out how to open safari 
+            * Shortcuts to open dev tools for console.log in all browsers:
+              - REPLACE ALL console.log by alert() (and for the first example, use document.write()) -> leave console.log out of the workshop
               - Safari: https://wickedlysmart.com/hfhtml5/devtools.html#:~:text=To%20access%20the%20Safari%20Developer,a%20new%20Develop%20menu%20appear.
                 - enable developer menu in preferences > advanced
-                - cmd + option / alt + win + i
+                - cmd + option + i / alt + win + i
                 - open "Console" tab
               - Chrome: Mac: cmd + option + j / Win: ctrl + shift + j
                 - move dock to bottom
               - Firefox: Mac: cmd + option + i / Win: F12
                 - open "Console" tab
-            * make code snippets as large as possible, hard to read
             * make a list of github raw files to copy-paste into Notepad with indents
               - first page with b0.jpg: https://raw.githubusercontent.com/mdvanes/intro-to-webprogramming-talk/main/assets/lorem.html
          -->
@@ -980,6 +998,8 @@ function checkout() {
         controlsTutorial: false,
         // defaultTiming: false,
         // slideNumber: "c/t",
+        height: "100%",
+        width: "100%",
 
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [
