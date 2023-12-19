@@ -13,8 +13,19 @@ function replaceSrc(value) {
   return value;
 }
 
+// Very risky way to chain alerts to confirms. But it avoids Promises.
+function getFirstAlertAfterFirstConfirm(value) {
+  const sub = value.substring(value.indexOf("confirm("));
+  const prefix = "alert(";
+  const index = sub.indexOf(prefix);
+  const withoutPrefix = sub.substring(index + prefix.length);
+  const closeIndex = withoutPrefix.indexOf(")");
+  return withoutPrefix.substring(0, closeIndex);
+}
+
 export function setPreview(slideElem) {
   const value = slideElem.querySelector("textarea").value;
+  const firstAlertMsg = getFirstAlertAfterFirstConfirm(value);
   const splitAt = value.indexOf("<head>") + "<head>".length;
   const part1 = value.substring(0, splitAt);
   const part2 = value.substring(splitAt);
@@ -41,13 +52,13 @@ export function setPreview(slideElem) {
         background-color: white;
         color: black;
       }
-      dialog button#ok {
+      dialog button {
         border: 1px solid white;
         background-color: black;
         color: white;
       }
       </style>`;
-      const injectPolyfill = `<dialog id="alert-polyfill">
+  const injectPolyfill = `<dialog id="alert-polyfill">
         <section></section>
         <button>OK</button>
       </dialog>
@@ -69,33 +80,21 @@ export function setPreview(slideElem) {
       function replaceLinebreaks(msg) {
         return msg.replace(/\\n/g, '<br />');
       }
-      let confirmState = undefined;
-      let timer = undefined;
       window.confirm = (msg) => {
-        confirmState = undefined;
         document.querySelector('#confirm-polyfill > section').innerHTML = replaceLinebreaks(msg);
         const dialogElem = document.getElementById('confirm-polyfill');
         dialogElem.showModal();
-        // timer = setInterval(() => {
-        //   if(typeof confirmState !== 'undefined') {
-        //     console.log(confirmState);
-        //     clearInterval(timer);
-        //     return confirmState;
-        //   }
-        // }, 1000);
-        // return true;
       };
       document.querySelector('#confirm-polyfill > button#cancel').addEventListener('click', () => {
         const dialogElem = document.getElementById('confirm-polyfill');
         dialogElem.close();
-        confirmState = false;
       })
       document.querySelector('#confirm-polyfill > button#ok').addEventListener('click', () => {
         const dialogElem = document.getElementById('confirm-polyfill');
         dialogElem.close();
-        confirmState = true;
+        alert(${firstAlertMsg})
       })
-      </script>`
+      </script>`;
   const withStyles = [part1, injectStyle, injectPolyfill, part2].join("");
   const withSrcPaths = replaceSrc(withStyles);
   slideElem.querySelector("iframe").src =
