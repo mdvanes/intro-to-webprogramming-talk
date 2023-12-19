@@ -111,21 +111,27 @@
         height: 40vh;
       }
 
-      /* Try to make font on slides bigger */
-      /* .slides {
-          width: 100vw !important
-      }
-      section[data-markdown] {
-        top: 0 !important;
-        height: 100vh !important;
-        width: 100vw;
-      }
-      section pre.code-wrapper {
-        font-size: 100%;
-        margin-top: 0;
-        margin-left: 0;
-      } */
+      .katex-display > .katex {
+        font-size: 2.2em;
+      }      
     </style>
+
+    <!-- TODO for highlighted textarea <script type="module">
+      (async ({chrome, netscape}) => {
+      
+        // add Safari polyfill if needed
+        if (!chrome && !netscape)
+          await import('https://unpkg.com/@ungap/custom-elements');
+      
+        const {default: HighlightedCode} =
+          await import('https://unpkg.com/highlighted-code');
+      
+        // bootstrap a theme through one of these names
+        // https://github.com/highlightjs/highlight.js/tree/main/src/styles
+        // HighlightedCode.useTheme('github-dark');
+      })(self);
+      </script> -->
+
   </head>
   <body>
     <div class="reveal">
@@ -677,6 +683,18 @@ function checkout() {
           </textarea>
         </live-preview-section>
 
+        <!-- TODO Highlighted textarea, needs tweaking: <section>
+          <textarea is="highlighted-code"
+          style="width: 90vw; height: 90vh; font-size: 3.6rem; line-height: 4rem;"
+          language="javascript" tab-size="2" >
+const items = ["shirt 1", "shirt 2"];
+items.push("shirt 3");
+for(const item of items) {
+  console.log(item);
+}
+</textarea>
+        </section> -->
+
         <section data-markdown>
           <textarea data-template data-line-numbers>
             ```javascript [1|2|3-5]
@@ -914,7 +932,7 @@ function checkout() {
 
         <!-- TODO:
           - Preparation
-            - test full screen MS Teams screen share -> needs to share full screen otherwise alert does not work, and use second monitor for speaker notes
+            - test full screen MS Teams screen share -> needs to share full screen otherwise alert does not work, and use second monitor for speaker notes -> now possible without second monitor because of Alert Polyfill
             - send them mail with zip with assets (gif/jpg)
           - Stretch goals:
             - Objects (data structures)

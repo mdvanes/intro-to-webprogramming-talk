@@ -241,8 +241,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
   overflow: auto;
   /* max-height: 400px; */
   word-wrap: normal;
-  font-size: 250%;
-  line-height: 110%;
+  font-size: 3.6rem;
+  line-height: 4rem;
 }
 
 .reveal .code-wrapper {
