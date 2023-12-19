@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>YOUR NAME</title>
+  </head>
+  <body>
+    <main>
+      <section>
+<button onclick="checkout()">
+  shopping basket
+</button>
+
+<hr />
+
+<div id="result"></div>
+      </section>
+    </main>
+    <script>
+const items = ["shirt 1", "shirt 2"];
+   
+function checkout() {
+  let confirmMessage = "Do you really want to buy this? ";
+  for(const item of items) {
+    confirmMessage = confirmMessage + "\n* " + item;
+  }
+  const isConfirmed = confirm(confirmMessage)
+  if(isConfirmed) {
+    alert("Your shirts are on their way!");
+  }
+}
+    </script>
+  </body>
+</html>

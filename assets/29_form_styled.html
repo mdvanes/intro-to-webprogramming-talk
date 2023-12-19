@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>YOUR NAME</title>
+    <style>
+      html,
+      body {
+        height: auto;
+        margin: 0;
+      }
+      main {
+        font-family: sans-serif;
+      }
+      h1 {
+        background-color: darkorange;
+        color: white;
+        padding: 10px;
+      }
+      p {
+        margin: 20px;
+      }
+      ol {
+        margin: 10px;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        margin: 10px;
+      }
+      li label {
+        flex: 1;
+      }
+      li input,
+      li select {
+        flex: 2;
+        width: 100%;
+      }
+      button {
+        background-color: darkorange;
+        border: transparent;
+        border-radius: 10px;
+        color: white;
+        padding: 10px;
+        margin: 20px;
+      }
+      div {
+        color: white;
+        font-family: monospace;
+        margin-bottom: 50px;
+        margin: 20px;
+        min-height: 30px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>SWAG!</h1>
+
+        <p>Make your own t-shirt:</p>
+        <ol>
+          <li>
+            <label>text:</label>
+            <input id="text" />
+          </li>
+          <li>
+            <label>color:</label>
+            <select id="color">
+              <option>red</option>
+              <option>green</option>
+            </select>
+          </li>
+        </ol>
+
+        <button onclick="show()">show me!</button>
+
+        <hr />
+
+        <div id="result"></div>
+      </section>
+    </main>
+    <script>
+      function show() {
+        document.getElementById("result").innerText =
+          document.getElementById("text").value;
+        document.getElementById("result").style.backgroundColor =
+          document.getElementById("color").value;
+      }
+    </script>
+  </body>
+</html>
